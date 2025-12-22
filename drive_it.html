@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>drive-it — Manual de uso: Camiones de basura y Barredoras</title>
+  <meta name="description" content="Manual de manejo, seguridad y mantenimiento para camiones de basura y vehículos barredora." />
+  <style>
+    :root{--accent:#0b74de;--muted:#6b7280;--bg:#f7f7fb;--card:#ffffff}
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; background:var(--bg); color:#111}
+    header{background:linear-gradient(90deg,var(--accent),#0b9df0); color:white; padding:28px 18px}
+    .container{max-width:1100px;margin:20px auto;padding:0 18px}
+    h1{margin:0;font-size:28px}
+    .hero-sub{opacity:.92;margin-top:6px;color:rgba(255,255,255,.9)}
+
+    .grid{display:grid;grid-template-columns:300px 1fr;gap:20px}
+    nav.card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(12,20,36,.06)}
+    main.card{background:var(--card);padding:20px;border-radius:12px;box-shadow:0 6px 18px rgba(12,20,36,.06)}
+
+    .search{display:flex;gap:8px;margin-bottom:12px}
+    .search input{flex:1;padding:10px;border-radius:8px;border:1px solid #e6e7eb}
+    .search button{padding:10px 12px;border-radius:8px;border:none;background:var(--accent);color:white}
+
+    ul.toc{list-style:none;padding:0;margin:12px 0}
+    ul.toc li{padding:8px 6px;border-radius:8px;cursor:pointer;color:var(--muted)}
+    ul.toc li:hover{background:#f1f5f9;color:#111}
+    .section{margin-bottom:18px}
+    h2{font-size:20px;margin:0 0 8px}
+    p.lead{color:var(--muted);margin:0 0 12px}
+
+    .card-block{background:#fbfdff;border:1px solid #eef3fb;padding:12px;border-radius:10px}
+    .checklist{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-top:8px}
+    .check-item{display:flex;align-items:center;gap:8px;padding:10px;border-radius:8px;border:1px solid #eef2f7}
+
+    table{width:100%;border-collapse:collapse;margin-top:10px}
+    th,td{padding:10px;border-bottom:1px solid #eef2f7;text-align:left}
+    th{background:#fbfbfe}
+
+    footer{margin-top:20px;text-align:center;color:var(--muted);font-size:13px;padding:18px}
+
+    /* responsive */
+    @media (max-width:880px){.grid{grid-template-columns:1fr;}.toc-toggle{display:block;margin-bottom:12px}}
+
+    /* print */
+    @media print{header,footer, .search, .toc-toggle{display:none} body{background:white}}
+
+    /* small helpers */
+    .kbd{background:#111;color:#fff;padding:4px 8px;border-radius:6px;font-size:12px}
+    .pill{display:inline-block;padding:6px 8px;background:#eef6ff;border-radius:999px;color:var(--accent);font-weight:600;font-size:13px}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>drive-it</h1>
+      <div class="hero-sub">Manual de uso y mantenimiento para camiones de basura y vehículos barredora — claro, práctico y accesible.</div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="grid">
+      <nav class="card" aria-label="Índice / Navegación">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <strong>Índice</strong>
+          <button class="pill" id="printBtn" title="Imprimir manual">Imprimir</button>
+        </div>
+
+        <div class="search">
+          <input id="searchInput" placeholder="Buscar sección, término o checklist..." aria-label="Buscar" />
+          <button id="clearSearch" title="Borrar búsqueda">✕</button>
+        </div>
+
+        <ul class="toc" id="tocList">
+          <li data-target="intro">Introducción</li>
+          <li data-target="safety">Seguridad</li>
+          <li data-target="truck-operation">Camiones de basura — Operación</li>
+          <li data-target="truck-maintenance">Camiones — Mantenimiento</li>
+          <li data-target="sweeper-operation">Barredoras — Operación</li>
+          <li data-target="sweeper-maintenance">Barredoras — Mantenimiento</li>
+          <li data-target="checklists">Checklists imprimibles</li>
+          <li data-target="faq">Preguntas frecuentes</li>
+        </ul>
+
+        <hr style="border:none;border-top:1px dashed #eef2f7;margin:12px 0">
+        <div style="font-size:13px;color:var(--muted)">
+          versión: <strong>1.0</strong><br>
+          última actualización: <span id="updatedAt"></span>
+        </div>
+      </nav>
+
+      <main class="card" id="mainContent">
+        <section id="intro" class="section">
+          <h2>Introducción</h2>
+          <p class="lead">Este manual proporciona instrucciones operativas, mejores prácticas de seguridad y planes de mantenimiento para camiones recolectores de residuos y vehículos barredora. Está pensado para conductores, técnicos y supervisores.</p>
+          <div class="card-block">
+            <strong>Objetivos</strong>
+            <ul>
+              <li>Reducir riesgos y accidentes.</li>
+              <li>Extender la vida útil del vehículo.</li>
+              <li>Optimizar la eficiencia de la flota.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="safety" class="section">
+          <h2>Seguridad</h2>
+          <p class="lead">Normas generales antes, durante y después de operar.</p>
+          <ul>
+            <li>Formación obligatoria para conductores.</li>
+            <li>Uso de EPI: casco, guantes, botas, chaleco reflectante.</li>
+            <li>Comprobación de frenos y sistemas hidráulicos antes de cada turno.</li>
+            <li>No emplear móvil mientras se conduce.</li>
+          </ul>
+
+          <div style="margin-top:12px">
+            <strong>Procedimiento ante accidente</strong>
+            <ol>
+              <li>Asegurar la zona y señalizar.</li>
+              <li>Atender heridos y llamar servicios de emergencia si procede.</li>
+              <li>Notificar al supervisor y completar informe de incidente.</li>
+            </ol>
+          </div>
+        </section>
+
+        <section id="truck-operation" class="section">
+          <h2>Camiones de basura — Operación</h2>
+          <p class="lead">Buenas prácticas al volante y en la manipulación de la tolva.</p>
+
+          <h3>Antes de arrancar</h3>
+          <ul>
+            <li>Inspección visual: neumáticos, luces, retrovisores.</li>
+            <li>Comprobación de combustible y niveles (aceite, refrigerante, hidráulico).</li>
+            <li>Verificar el correcto funcionamiento de la tolva y dispositivos de compactación.</li>
+          </ul>
+
+          <h3>Durante la ruta</h3>
+          <ul>
+            <li>Mantener distancia de seguridad y velocidad adecuada.</li>
+            <li>Comunicación con el equipo mediante radio si existe.</li>
+            <li>Cuidado en maniobras de inversión y en calles estrechas.</li>
+          </ul>
+
+          <h3>Uso de la tolva</h3>
+          <p>Operar la tolva únicamente desde los mandos designados. Nunca permitir que personal se coloque entre vehículo y contenedor mientras la tolva está en movimiento.</p>
+
+          <table>
+            <thead><tr><th>Acción</th><th>Riesgo</th><th>Contramedida</th></tr></thead>
+            <tbody>
+              <tr><td>Compactación con sobrecarga</td><td>Daño en sistema hidráulico</td><td>Respetar límite de carga</td></tr>
+              <tr><td>Operar con puerta abierta</td><td>Caída de residuos/lesiones</td><td>Verificar cierre antes de circular</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="truck-maintenance" class="section">
+          <h2>Camiones — Mantenimiento</h2>
+          <p class="lead">Calendario básico de revisiones.</p>
+          <div class="card-block">
+            <strong>Diario</strong>
+            <ul>
+              <li>Inspección visual general.</li>
+              <li>Comprobar luces y frenos.</li>
+            </ul>
+            <strong>Semanal</strong>
+            <ul>
+              <li>Inspección de sistemas hidráulicos y mangueras.</li>
+              <li>Comprobación de nivel de aceite y refrigerante.</li>
+            </ul>
+            <strong>Mensual</strong>
+            <ul>
+              <li>Revisión de chasis y soldaduras.</li>
+              <li>Lubricación de partes móviles.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="sweeper-operation" class="section">
+          <h2>Barredoras — Operación</h2>
+          <p class="lead">Particularidades de las barredoras (cepillos, succión y filtros).</p>
+          <ul>
+            <li>Asegurar que los cepillos estén correctamente montados y sin desgaste extremo.</li>
+            <li>Controlar el depósito de residuos y el sistema de filtrado para polvo.</li>
+            <li>Evitar zonas con líquidos inflamables o puntas metálicas que dañen los cepillos.</li>
+          </ul>
+
+          <div style="margin-top:12px">
+            <strong>Consejo operativo</strong>
+            <p>Adaptar la velocidad de barrido a la densidad de residuos para optimizar consumo y desgaste.</p>
+          </div>
+        </section>
+
+        <section id="sweeper-maintenance" class="section">
+          <h2>Barredoras — Mantenimiento</h2>
+          <p class="lead">Repuestos y mantenimiento preventivo.</p>
+          <ul>
+            <li>Cambio de cepillos según horas de uso o desgaste visible.</li>
+            <li>Limpieza y revisión de filtros HEPA/antipolvo.</li>
+            <li>Revisión del sistema de aspiración y bombas de agua.</li>
+          </ul>
+        </section>
+
+        <section id="checklists" class="section">
+          <h2>Checklists imprimibles</h2>
+          <p class="lead">Lista rápida para imprimir y llevar en cabina.</p>
+
+          <div class="checklist" id="checklistCards">
+            <div class="check-item"><input type="checkbox" id="c1"><label for="c1"> Revisión visual externa</label></div>
+            <div class="check-item"><input type="checkbox" id="c2"><label for="c2"> Niveles de fluidos</label></div>
+            <div class="check-item"><input type="checkbox" id="c3"><label for="c3"> Funcionamiento de luces</label></div>
+            <div class="check-item"><input type="checkbox" id="c4"><label for="c4"> Sistema hidráulico</label></div>
+            <div class="check-item"><input type="checkbox" id="c5"><label for="c5"> Estado de cepillos (barredora)</label></div>
+            <div class="check-item"><input type="checkbox" id="c6"><label for="c6"> Equipo de seguridad personal</label></div>
+          </div>
+
+          <div style="margin-top:12px">
+            <button id="printChecklist">Imprimir checklist</button>
+            <button id="resetChecklist">Limpiar marcadores</button>
+          </div>
+        </section>
+
+        <section id="faq" class="section">
+          <h2>Preguntas frecuentes</h2>
+          <details>
+            <summary>¿Con qué frecuencia cambiar los filtros de la barredora?</summary>
+            <p>Depende del uso, pero como regla general cada 3-6 meses o según el fabricante.</p>
+          </details>
+
+          <details>
+            <summary>¿Qué hacer si se atasca la tolva?</summary>
+            <p>Detener la operación, bloquear el sistema hidráulico y retirar obstrucciones siguiendo el procedimiento de seguridad.</p>
+          </details>
+        </section>
+
+      </main>
+    </div>
+
+    <footer>
+      drive-it • Manual interactivo — Guardar una copia local: <span class="kbd">Archivo → Guardar como</span>
+    </footer>
+  </div>
+
+  <script>
+    // small interactive behaviour
+    const toc = document.getElementById('tocList');
+    toc.addEventListener('click', e => {
+      const li = e.target.closest('li'); if(!li) return;
+      const target = document.getElementById(li.dataset.target);
+      if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+
+    // search
+    const searchInput = document.getElementById('searchInput');
+    const clearBtn = document.getElementById('clearSearch');
+    const sections = document.querySelectorAll('main .section');
+    searchInput.addEventListener('input', ()=> {
+      const q = searchInput.value.trim().toLowerCase();
+      sections.forEach(s => {
+        const text = s.innerText.toLowerCase();
+        s.style.display = text.includes(q) ? '' : 'none';
+      });
+      // highlight TOC items
+      Array.from(toc.querySelectorAll('li')).forEach(li=>{
+        const sec = document.getElementById(li.dataset.target);
+        if(!sec) return;
+        li.style.display = sec.style.display === 'none' ? 'none' : '';
+      });
+    });
+    clearBtn.addEventListener('click', ()=>{ searchInput.value=''; searchInput.dispatchEvent(new Event('input')); });
+
+    // print
+    document.getElementById('printBtn').addEventListener('click', ()=> window.print());
+    document.getElementById('printChecklist').addEventListener('click', ()=> window.print());
+    document.getElementById('resetChecklist').addEventListener('click', ()=>{
+      document.querySelectorAll('#checklistCards input[type=checkbox]').forEach(i=>i.checked=false);
+    });
+
+    // updated date
+    document.getElementById('updatedAt').innerText = new Date().toLocaleDateString('es-ES');
+
+    // keyboard shortcut: / to focus search
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === '/'){
+        e.preventDefault(); searchInput.focus();
+      }
+    });
+  </script>
+</body>
+</html>
