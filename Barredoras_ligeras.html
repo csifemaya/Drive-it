@@ -20,32 +20,71 @@
       font-size: 0.9rem;
       color: #6c757d;
     }
+    .cards-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .card img {
+      max-width: 100%;
+      height: auto;
+    }
+    @media (max-width: 768px) {
+      .cards-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
   </style>
     </head>
     <body>
     <!-- CABECERA -->
   <header class="py-4 mb-5">
     <div class="container">
-      <a href="index.html"><h1 class="display-6 mb-1">drive-it</a></h1>
+      <a href="index.html"><h1 class="display-6 mb-1">drive-it</h1></a>
       <p class="lead mb-0">
         Manual de uso de camiones de basura, barredoras y vehículos auxiliares
       </p>
     </div>
   </header>
-    <!-- TARJETA Baldeadora-->
+    <!-- TARJETAS -->
+     <!-- TARJETA MATHIEU-->
     <div class="container mt-4">
-      <div class="card">
-        <div class="card-header bg-primary text-white">
-          <h5 class="card-title mb-0">Manual Baldeadora Mathieu</h5>
+      <div class="cards-row">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h5 class="card-title mb-0">Baldeadora Mathieu</h5>
+          </div>
+          <img src="img/Baldeadora_Mathieu.png" class="card-img-top" alt="Baldeadora Mathieu">
+          <div class="card-body">
+            <p class="card-text">
+            <a href="https://drive.google.com/file/d/1xUgwo7PPekrMEFQNlDj3cGJagxLFGNhK/view?usp=sharing" 
+            class="text-decoration-none">📄 Manual Baldeadora Mathieu</a></p>
+          </div>
         </div>
-        <img src="img/Baldeadora_Mathieu.png" class="card-img-top" alt="Baldeadora" style="width: 50%; height: auto; margin: 0 auto; display: block;">
-        <div class="card-body">
-          <p class="card-text">
-          <a href="https://drive.google.com/file/d/1xUgwo7PPekrMEFQNlDj3cGJagxLFGNhK/view?usp=sharing" 
-          class="text-decoration-none">📄 Manual de instrucciones para baldeadora Mathieu</a></p>
+          <!-- TARJETA KARCHER-->
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h5 class="card-title mb-0">Karcher MC 250</h5>
+          </div>
+          <img src="img/Karcher.png" class="card-img-top" alt="Karcher MC 250">
+          <div class="card-body">
+            <div class="list-group">
+            
+            <a href="https://youtu.be/BYG0SlnHywo" class="list-group-item list-group-item-action">
+              📼 Desmontar Tolva Karcher</a>
+            <a href="https://youtu.be/CYr-cGwt7ck" class="list-group-item list-group-item-action">
+              📼 Desmontar Carro de Cepillos</a>
+            <a href="https://youtu.be/bOI8IOwZiyE" class="list-group-item list-group-item-action">
+              📼 Limpieza Karcher MC250</a>
+          </div>
+            <p class="card-text">
+            <a href="https://drive.google.com/file/d/1l0fcTe5EvyydmU6Jz4wrxtYz-rdSrw5h/view?usp=drive_link" 
+            class="text-decoration-none">📄 Inicio Rápido MC 250</a></p>
+          </div>
         </div>
       </div>
-    </div>
+    </div>  
 
        <!-- PIE DE PÁGINA -->
   <footer class="mt-5 py-4 bg-light">
